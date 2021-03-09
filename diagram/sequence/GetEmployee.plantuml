@@ -1,0 +1,13 @@
+@startuml GetEmployee
+
+actor User
+
+User -> ProductsTable : get employee
+
+alt 2XX request
+    EmployeeTable -> User : return Employee object
+else 4XX request
+    EmployeeTable -> User : return ERROR message
+end
+
+@enduml

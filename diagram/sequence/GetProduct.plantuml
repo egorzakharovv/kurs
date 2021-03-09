@@ -1,0 +1,13 @@
+@startuml GetProduct
+
+actor User
+
+User -> ProductsTable : get product
+
+alt 2XX request
+    ProductsTable -> User : return Product object
+else 4XX request
+    ProductsTable -> User : return ERROR message
+end
+
+@enduml

@@ -1,0 +1,13 @@
+@startuml GetCompositions
+
+actor User
+
+User -> SaleCompositionTable : get compositions
+
+alt 2XX request
+    SaleCompositionTable -> User : return Compositions object
+else 4XX request
+    SaleCompositionTable -> User : return ERROR message
+end
+
+@enduml

@@ -1,0 +1,13 @@
+@startuml GetTypes
+
+actor User
+
+User -> TypesTable : get types
+
+alt 2XX request
+    TypesTable -> User : return Type object
+else 4XX request
+    TypesTable -> User : return ERROR message
+end
+
+@enduml

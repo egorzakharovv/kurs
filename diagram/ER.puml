@@ -1,0 +1,48 @@
+
+@startuml ER
+hide circle
+
+entity Product{
+    id: number
+    --
+    name: string
+    typeId: Number<FK>
+    price: int
+}
+entity Employee{
+    id: number
+    --
+    name: string
+    postId: Number<FK>
+    salary: int
+}
+entity Type{
+    id: number
+    --
+    name: string
+}
+
+entity Post{
+    id: number
+    --
+    name: string
+}
+entity Sale{
+    id: number
+    --
+    date: date
+    employeeId: Number<FK>
+}
+entity SaleComposition{
+    id: number
+    --
+    saleId: Number<FK>
+    productId: Number<FK>
+    quantity:int
+}
+Product }|--|| Type
+Employee }|--|| Post
+SaleComposition }|--|| Sale
+Sale }|--|| Employee
+SaleComposition }|--|| Product
+@enduml

@@ -1,0 +1,13 @@
+@startuml ChangePosts
+
+actor User
+
+User -> PostTable : change post
+
+alt 2XX request
+    PostTable -> User : return OK message
+else 4XX request
+    PostTable -> User : return ERROR message
+end
+
+@enduml

@@ -1,0 +1,792 @@
+swagger: "2.0"
+info:
+  description: "Магазин аксессуаров для мобильных телефонов"
+  version: "1.0.0"
+  title: "Mobile Phone Accessories Store"
+host: "petstore.swagger.io"
+basePath: "/v2"
+schemes:
+  - "https"
+  - "http"
+paths:
+  /products:
+    post:
+      tags:
+        - "products"
+      summary: "create product"
+      description: ""
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          schema:
+            $ref: "#/definitions/Product"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid Order"
+    get:
+      tags:
+        - "products"
+      summary: "return products list"
+      description: ""
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Product"
+        "400":
+          description: "Invalid Order"
+
+  /products/{id}:
+    get:
+      tags:
+        - "products"
+      summary: "return product by id"
+      operationId: "findPetsByStatus"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of product to return"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Product"
+        "400":
+          description: "Invalid Order"
+    put:
+      tags:
+        - "products"
+      summary: "edit product by id"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of product to edit"
+          required: true
+          type: "integer"
+          format: "int64"
+
+        - in: "body"
+          name: "body"
+          schema:
+            $ref: "#/definitions/Product"
+
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid Order"
+    delete:
+      tags:
+        - "products"
+      summary: "delete product by id"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of product to delete"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid Order"
+
+  /products/type={typeId}:
+    get:
+      tags:
+        - "products"
+      summary: "return products of type with id=typeId"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "typeId"
+          in: "path"
+          description: "ID group"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Product"
+        "400":
+          description: "Invalid Order"
+
+  /employee:
+    post:
+      tags:
+        - "employee"
+      summary: "create employee"
+      description: ""
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          schema:
+            $ref: "#/definitions/Product"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid Order"
+    get:
+      tags:
+        - "employee"
+      summary: "return employee list"
+      description: ""
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Employee"
+        "400":
+          description: "Invalid Order"
+
+  /employee/{id}:
+    get:
+      tags:
+        - "employee"
+      summary: "return employee by id"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of employee to return"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Employee"
+        "400":
+          description: "Invalid Order"
+    put:
+      tags:
+        - "employee"
+      summary: "edit product by id"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of employee to edit"
+          required: true
+          type: "integer"
+          format: "int64"
+
+        - in: "body"
+          name: "body"
+          schema:
+            $ref: "#/definitions/Employee"
+
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid Order"
+    delete:
+      tags:
+        - "employee"
+      summary: "delete employee by id"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of employee to delete"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid Order"
+
+  /sales:
+    post:
+      tags:
+        - "sales"
+      summary: "create sales"
+      description: ""
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          schema:
+            $ref: "#/definitions/Sale"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid Order"
+    get:
+      tags:
+        - "sales"
+      summary: "return sales list"
+      description: ""
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Sale"
+        "400":
+          description: "Invalid Order"
+
+  /sales/{id}:
+    get:
+      tags:
+        - "sales"
+      summary: "return sales by id"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of employee to return"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Employee"
+        "400":
+          description: "Invalid Order"
+    put:
+      tags:
+        - "sales"
+      summary: "edit sale by id"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of sales to edit"
+          required: true
+          type: "integer"
+          format: "int64"
+
+        - in: "body"
+          name: "body"
+          schema:
+            $ref: "#/definitions/Sale"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid Order"
+    delete:
+      tags:
+        - "sales"
+      summary: "delete sale by id"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of sales to delete"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid Order"
+
+  /sales/{id}/composition:
+    get:
+      tags:
+        - "sales"
+      summary: "return composition of sale by id"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of employee to return"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/SaleComposition"
+        "400":
+          description: "Invalid Order"
+
+  /composition:
+    get:
+      tags:
+        - "composition"
+      summary: "return compositions"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/SaleComposition"
+        "400":
+          description: "Invalid Order"
+    post:
+      tags:
+        - "composition"
+      summary: "create composition"
+      description: ""
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          schema:
+            $ref: "#/definitions/SaleComposition"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid Order"
+
+  /composition/{id}:
+    get:
+      tags:
+        - "composition"
+      summary: "return composition by id"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of employee to return"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/SaleComposition"
+        "400":
+          description: "Invalid Order"
+    put:
+      tags:
+        - "composition"
+      summary: "edit composition of sale by id"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of sales to edit"
+          required: true
+          type: "integer"
+          format: "int64"
+
+        - in: "body"
+          name: "body"
+          schema:
+            $ref: "#/definitions/SaleComposition"
+
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid Order"
+    delete:
+      tags:
+        - "composition"
+      summary: "delete composition of sale by id"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of sales to delete"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid Order"
+
+  /composition/price={price}:
+    get:
+      tags:
+        - "composition"
+      summary: "return composition of type with price=price"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "price"
+          in: "path"
+          description: "ID group"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/SaleComposition"
+        "400":
+          description: "Invalid Order"
+
+  /composition/price<{price}:
+    get:
+      tags:
+        - "composition"
+      summary: "return composition of type with price<price"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "price"
+          in: "path"
+          description: "ID group"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/SaleComposition"
+        "400":
+          description: "Invalid Order"
+
+  /composition/price>{price}:
+    get:
+      tags:
+        - "composition"
+      summary: "return composition of type with price>price"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "price"
+          in: "path"
+          description: "ID group"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/SaleComposition"
+        "400":
+          description: "Invalid Order"
+
+  /types:
+    post:
+      tags:
+        - "types"
+      summary: "create types"
+      description: ""
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          schema:
+            $ref: "#/definitions/Type"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid Order"
+    get:
+      tags:
+        - "types"
+      summary: "return types list"
+      description: ""
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Type"
+        "400":
+          description: "Invalid Order"
+
+  /types/{id}:
+    get:
+      tags:
+        - "types"
+      summary: "return type by id"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of type to return"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Type"
+        "400":
+          description: "Invalid Order"
+    put:
+      tags:
+        - "types"
+      summary: "edit type by id"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of type to edit"
+          required: true
+          type: "integer"
+          format: "int64"
+        - in: "body"
+          name: "body"
+          schema:
+            $ref: "#/definitions/Sale"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid Order"
+    delete:
+      tags:
+        - "types"
+      summary: "delete sale by id"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of types to delete"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid Order"
+
+  /posts:
+    post:
+      tags:
+        - "posts"
+      summary: "create posts"
+      description: ""
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          schema:
+            $ref: "#/definitions/Post"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid Order"
+    get:
+      tags:
+        - "posts"
+      summary: "return posts list"
+      description: ""
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Post"
+        "400":
+          description: "Invalid Order"
+
+  /posts/{id}:
+    get:
+      tags:
+        - "posts"
+      summary: "return post by id"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of post to return"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Post"
+        "400":
+          description: "Invalid Order"
+    put:
+      tags:
+        - "posts"
+      summary: "edit post by id"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of post to edit"
+          required: true
+          type: "integer"
+          format: "int64"
+        - in: "body"
+          name: "body"
+          schema:
+            $ref: "#/definitions/Post"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid Order"
+    delete:
+      tags:
+        - "posts"
+      summary: "delete post by id"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of posts to delete"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid Order"
+
+definitions:
+  Employee:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      postId:
+        type: "integer"
+      salary:
+        type: "integer"
+      name:
+        type: "string"
+
+  Product:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      typeId:
+        type: "integer"
+      price:
+        type: "integer"
+      name:
+        type: "string"
+
+  Type:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+
+  Sale:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      employeeId:
+        type: "integer"
+      date:
+        type: "string"
+
+  SaleComposition:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      productId:
+        type: "integer"
+      saleID:
+        type: "integer"
+      quantity:
+        type: "integer"
+
+  Post:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"

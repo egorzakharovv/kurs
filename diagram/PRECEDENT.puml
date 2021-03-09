@@ -1,0 +1,27 @@
+@startuml PRECEDENT
+
+left to right direction
+
+actor User
+
+rectangle {
+    User -- ("Change product")
+    User -- ("Get product")
+
+    User -- ("Change employee")
+    User -- ("Get employee")
+
+    User -- ("Change sales")
+    User -- ("Get sales")
+
+    User -- ("Change composition")
+    User -- ("Get composition")
+
+    User -- ("Change types")
+    User -- ("Get types")
+
+    User -- ("Change posts")
+    User -- ("Get posts")
+}
+
+@enduml

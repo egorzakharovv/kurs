@@ -1,0 +1,13 @@
+@startuml GetPosts
+
+actor User
+
+User -> PostsTable : get posts
+
+alt 2XX request
+    PostsTable -> User : return Post object
+else 4XX request
+    PostsTable -> User : return ERROR message
+end
+
+@enduml

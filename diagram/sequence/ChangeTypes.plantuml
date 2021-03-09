@@ -1,0 +1,13 @@
+@startuml ChangeTypes
+
+actor User
+
+User -> TypesTable : change types
+
+alt 2XX request
+   TypesTable -> User : return OK message
+else 4XX request
+    TypesTable -> User : return ERROR message
+end
+
+@enduml

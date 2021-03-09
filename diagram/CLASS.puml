@@ -1,0 +1,47 @@
+@startuml CLASS
+hide circle
+
+entity Product{
+    id: number
+    --
+    name: string
+    typeId: Number<FK>
+    price: int
+}
+entity Employee{
+    id: number
+    --
+    name: string
+    postId: Number<FK>
+    salary: int
+}
+entity Type{
+    id: number
+    --
+    name: string
+}
+
+entity Post{
+    id: number
+    --
+    name: string
+}
+entity Sale{
+    id: number
+    --
+    date: date
+    employeeId: Number<FK>
+}
+entity SaleComposition{
+    id: number
+    --
+    saleId: Number<FK>
+    productId: Number<FK>
+    quantity:int
+}
+Type "1" <-- "*" Product
+Post "1" <-- "*" Employee
+Sale "1" <-- "*" SaleComposition
+Employee "1" <-- "*" Sale
+Product "1" <-- "*" SaleComposition
+@enduml

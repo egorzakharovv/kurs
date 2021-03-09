@@ -1,0 +1,13 @@
+@startuml changeSales
+
+actor User
+
+User -> SalesTable : change sales
+
+alt 2XX request
+    SalesTable -> User : return OK message
+else 4XX request
+    SalesTable -> User : return ERROR message
+end
+
+@enduml
